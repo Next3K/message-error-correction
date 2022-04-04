@@ -8,7 +8,8 @@ public class Decoder {
 
     /**
      * Decodes previously encoded tokens.
-     * @param encodedTokens array of Strings representing 16 bits of encoded message (message bits + parity bits)
+     * @param encodedTokens array of Strings,
+     *                      each token represents 16 bits of encoded message (message bits + parity bits)
      * @return array of Strings representing 8 bits of decoded message (only message bits)
      */
     public static String[] decode(String[] encodedTokens) {
@@ -44,7 +45,7 @@ public class Decoder {
     private static void correctError(int[] correctnessVector, int[] messageBits) {
         var columnsContainingError = Helper.getColumnsContainingError(correctnessVector); // find columns with errors
         for (var errorIndex: columnsContainingError) {
-            if (errorIndex < 8) { // correct bits if error is inside the message
+            if (errorIndex < 8) { // correct bits if error is inside the 8 bits of message
                 messageBits[errorIndex] ^=  1; // flip the error bit
             }
         }
