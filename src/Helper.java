@@ -65,12 +65,14 @@ public class Helper {
      * @return builder.
      * @throws FileNotFoundException Any IO error.
      */
-    private static StringBuilder readText(String filename) throws FileNotFoundException {
+    private static StringBuilder readTextFromFile(String filename) throws FileNotFoundException {
         File input = new File(filename + ".txt");
         Scanner scanner = new Scanner(input);
         List<String> lines = new LinkedList<>();
         for (int i = 0; i < 100; i++) { // max 'i' just in case
-            if (!scanner.hasNextLine()) break;
+            if (!scanner.hasNextLine()) {
+                break;
+            }
             String data = scanner.nextLine();
             lines.add(data);
         }
