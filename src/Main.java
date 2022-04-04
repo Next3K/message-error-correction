@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        // run program in loop
+
         while(true) {
-            System.out.println("Choose what  to do: \n 1) encode file \n 2) decode file \n 3) Exit");
+            System.out.println("Choose action: \n 1) encode file \n 2) decode file \n 3) Exit");
             Scanner in = new Scanner(System.in);
             int choice;
             while(true) {
@@ -22,9 +22,7 @@ public class Main {
                 }
             }
 
-
-            String filename;
-            Scanner scanner2 = new Scanner(System.in);
+            String filename; // name of file to encode/decode
 
             switch (choice) {
                 case 1 -> { // chosen action: encoding
@@ -34,13 +32,13 @@ public class Main {
                     String fullMessage = Helper.readSeriesOfBitsFromTextFile(filePath); // plain text read from file
                     String[] messageTokens = Helper.getMessageTokens(fullMessage); // split message into tokens
                     String[] encodedTokens = Encoder.encode(messageTokens); // encode tokens
-                    Helper.writeToFile(filename, encodedTokens,Helper.TYPE.ENCODE); // write encoded to file
+                    Helper.writeToFile(filename, encodedTokens,Helper.TYPE.ENCODE); // write output to ./encoded/filename.txt
                 }
-                case 2 -> {
-                    System.out.println("Provide name of file to decode: ");
-                    filename = scanner2.next();
-                    String encodedMessage = Helper.readEncodedFromFile(filename); // file inside ./files directory
-                    String[] encodedMessageTokens = Helper.getEncodedMessageTokens(encodedMessage); // get tokens from text
+                case 2 -> { // chosen action: decoding
+                    System.out.println("Provide the name of file to decode: ");
+                    filename = in.next();
+                    String encodedMessage = Helper.readEncodedFromFile(filename); // file: ./encoded/filename.txt
+                    String[] encodedMessageTokens = Helper.getEncodedMessageTokens(encodedMessage); // get tokens
                     String[] decodedTokens = Decoder.decode(encodedMessageTokens); // decode tokens
                     Helper.writeToFile(filename, decodedTokens,Helper.TYPE.DECODE); // write decoded tokens to file
                 }
