@@ -83,16 +83,6 @@ public class Helper {
         return builder;
     }
 
-    /**
-     * Reads encoded text from file inside ./encoded/ directory
-     * @param filename file inside ./encoded/ directory
-     * @return text.
-     * @throws IOException Any IO error.
-     */
-    public static String readEncodedTextFromFile(String filename) throws IOException {
-        StringBuilder builder = readText(filename);
-        return builder.toString();
-    }
 
     /**
      * Reads encoded text from file inside ./encoded/ directory
