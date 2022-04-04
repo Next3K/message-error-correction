@@ -47,15 +47,15 @@ public class Helper {
     }
 
     /**
-     * Reads text from file inside ./files/ directory
-     * @param filename file inside ./files/ directory
-     * @return text.
+     * Reads text from file with provided name inside./files/ directory.
+     * @param filename file inside ./files/ directory.
+     * @return text - content of the file converted to series of bits.
      * @throws IOException Any IO error.
      */
     public static String readSeriesOfBitsFromTextFile(String filename) throws IOException {
         StringBuilder builder = readTextFromFile(filename);
         String fullText = builder.toString();
-        System.out.println("Char tokens read successfully: " + fullText);
+        System.out.println("Characters read successfully: " + fullText);
         return Helper.charStringToBitString(fullText);
     }
 
