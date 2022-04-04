@@ -27,7 +27,7 @@ public class Helper {
     }
 
     /**
-     * Writes text to file.
+     * Writes tokens to file.
      * @param filename name of file.
      * @param tokens tokens to be written to the file.
      * @param type type of written tokens: encoded/decoded.
@@ -103,7 +103,7 @@ public class Helper {
     }
 
     /**
-     * Divide long message into tokens of 8 bits.
+     * Divide String representing eries of bits into message tokens of 8 bits.
      * @param message text message.
      * @return Array of message tokens (each 8bits)
      */
@@ -127,7 +127,7 @@ public class Helper {
     }
 
     /**
-     * Converts encoded text into tokens of 16 bits.
+     * Split encoded text into array of tokens each having 16 bits.
      * @param encodedMessage encoded text.
      * @return tokens of 16 bits.
      */
@@ -147,7 +147,7 @@ public class Helper {
     }
 
     /**
-     * Computes parity bits for given 8 bit message.
+     * Computes parity bits for given 8 bit message using H matrix.
      * @param message8bit 8 bit message.
      * @return array of parity bits.
      */
@@ -194,8 +194,9 @@ public class Helper {
 
     /**
      * Computes array of bits representing error vector.
+     * Column of matrix H that is identical to the computed array is a column containing an error.
      * @param message16bits 16bit token (8 bit message + 8 parity bits).
-     * @return Vector providing error information.
+     * @return array of length 8, providing information about possible errors.
      */
     public static int[] answerVector(int[] message16bits) {
         int[] answerVector = new int[8];
@@ -235,7 +236,7 @@ public class Helper {
             }
         }
 
-        for (int i = 0; i < hArrays.size(); i++) { // check which two columns contain two errors (combined)
+        for (int i = 0; i < hArrays.size(); i++) { // check which two columns combine into answer vector (error vector)
             for (int j = i + 1; j < hArrays.size(); j++) {
                 int[] column1 = hArrays.get(i);
                 int[] column2 = hArrays.get(j);
@@ -247,8 +248,8 @@ public class Helper {
                     }
                 }
                 if (matchingColumns) {
-                    columnsWithErrors.add(i); // we found first column containing error.
-                    columnsWithErrors.add(j); // we found second column containing error.
+                    columnsWithErrors.add(i); // found first column containing error.
+                    columnsWithErrors.add(j); // found second column containing error.
                     return columnsWithErrors;
                 }
             }
