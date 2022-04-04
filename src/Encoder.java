@@ -18,10 +18,7 @@ public class Encoder {
 
         for (int j = 0; j < notEncodedTokens.length; j++) {
             String message8bit = notEncodedTokens[j];
-            int[] token8bit = new int[8];
-            for (int i = 0; i < 8; i++) {
-                token8bit[i] = Character.getNumericValue(message8bit.charAt(i));
-            }
+            int[] token8bit = Helper.toIntegerToken(message8bit);
             int[] parityBitsForMessage = Helper.getParityBitsForMessage(token8bit);
             int[] token16bit = Arrays.copyOf(token8bit, 16);
             System.arraycopy(parityBitsForMessage, 0, token16bit, 8, 8);
