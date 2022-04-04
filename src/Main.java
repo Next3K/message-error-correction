@@ -27,11 +27,11 @@ public class Main {
             Scanner scanner2 = new Scanner(System.in);
 
             switch (choice) {
-                case 1 -> {
-                    System.out.println("Provide the name of file: ");
-                    filename = scanner2.next();
-                    String filePath = "files" + File.separator + filename; // file inside ./files directory
-                    String fullMessage = Helper.readPlainTextFromFile(filePath); // text written from file
+                case 1 -> { // chosen action: encoding
+                    System.out.println("Provide the name of file to encode: ");
+                    filename = in.next();
+                    String filePath = "files" + File.separator + filename; // file: ./files/filename.txt
+                    String fullMessage = Helper.readSeriesOfBitsFromTextFile(filePath); // plain text read from file
                     String[] messageTokens = Helper.getMessageTokens(fullMessage); // split message into tokens
                     String[] encodedTokens = Encoder.encode(messageTokens); // encode tokens
                     Helper.writeToFile(filename, encodedTokens,Helper.TYPE.ENCODE); // write encoded to file

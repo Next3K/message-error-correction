@@ -52,8 +52,8 @@ public class Helper {
      * @return text.
      * @throws IOException Any IO error.
      */
-    public static String readPlainTextFromFile(String filename) throws IOException {
-        StringBuilder builder = readText(filename);
+    public static String readSeriesOfBitsFromTextFile(String filename) throws IOException {
+        StringBuilder builder = readTextFromFile(filename);
         String fullText = builder.toString();
         System.out.println("Char tokens read successfully: " + fullText);
         return Helper.charStringToBitString(fullText);
