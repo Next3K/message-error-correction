@@ -91,7 +91,7 @@ public class Helper {
      * @throws IOException Any IO error.
      */
     public static String readEncodedFromFile(String filename) throws IOException {
-        return readEncodedTextFromFile("encoded" + File.separator + filename);
+        return readTextFromFile("encoded" + File.separator + filename).toString();
     }
 
     /**
