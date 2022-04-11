@@ -26,5 +26,4 @@ It is a simple terminal app, no tests were implemented.
 
 MIT
 
-**Free Software, Hell Yeah!**
 
