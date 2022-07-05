@@ -2,7 +2,6 @@
 ## _Message error correction using parity bits_
 
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 The goal of this project is to design and implement message error-correcting mechanism using parity bits.
 It is a simple terminal app, no tests were implemented.
